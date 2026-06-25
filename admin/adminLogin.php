@@ -131,7 +131,6 @@ input{
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
     <a href="role.php">
         <img src="../images/back.png" class="icon-img" alt="Back" />
@@ -145,7 +144,6 @@ input{
     
 </div>
 
-<!-- CONTENT -->
 <div class="container">
 
     <div class="title">
