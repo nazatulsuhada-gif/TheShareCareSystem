@@ -2,19 +2,15 @@
 session_start();
 
 if (isset($_POST['login'])) {
-    // trim() membuang ruang kosong di awal dan akhir input
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
-
-    // DEBUG: Anda boleh uncomment baris di bawah untuk melihat apa yang anda taip sebenarnya
-    // var_dump($username, $password); exit(); 
 
     if ($username === "admin@sharecare.com" && $password === "admin123") {
         $_SESSION['admin'] = $username;
         header("Location: /thesharecaresystem/admin/adminDashboard.php");
         exit();
     } else {
-        $error = "Invalid username or password. Sila pastikan huruf besar/kecil betul.";
+        $error = "Invalid username or password. Please make sure the uppercase/lowercase letters are correct.";
     }
 }
 ?>
