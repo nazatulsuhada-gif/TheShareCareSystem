@@ -10,7 +10,7 @@
         <li><a href="adminDonationReview.php">Donation</a></li>
         <li><a href="adminRequestManagement.php">Requests</a></li>
         <li><a href="adminReportManagement.php">Report</a></li>
-        <li><a href="adminMessageManagement.php">Messages</a></li>
+        <li><a href="adminMessageRead.php">Messages</a></li>
 
         <li><a href="logout.php" class="logout-link">Logout</a></li>
     </ul>
