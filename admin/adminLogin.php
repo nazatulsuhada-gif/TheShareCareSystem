@@ -7,7 +7,7 @@ if (isset($_POST['login'])) {
 
     if ($username === "admin@sharecare.com" && $password === "admin123") {
         $_SESSION['admin'] = $username;
-        header("Location: /thesharecaresystem/admin/adminDashboard.php");
+        header("Location: /theesharecaresystem/admin/adminDashboard.php");
         exit();
     } else {
         $error = "Invalid username or password. Please make sure the uppercase/lowercase letters are correct.";
