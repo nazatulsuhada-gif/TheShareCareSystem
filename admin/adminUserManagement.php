@@ -138,10 +138,20 @@ if(!$result){
             <tr>
                 <td style="text-align: center;"><?php echo $no++; ?></td>
                 <td style="text-align: center;">
-                    <?php if(!empty($row['profile_picture'])): ?>
-                        <img src="../uploads/<?php echo $row['profile_picture']; ?>" class="profile-img" alt="Profile">
+                    <?php 
+                    $profilePath = "../uploads/profile/" . $row['profile_picture']; 
+                    
+                    // 1. Jika ada nama fail DALAM DATABASE DAN fail wujud dalam folder
+                    if(!empty($row['profile_picture']) && file_exists($profilePath)): ?>
+                        <a href="<?php echo $profilePath; ?>" target="_blank">
+                            <img src="<?php echo $profilePath; ?>" class="profile-img" alt="Profile">
+                        </a>
+                    
+                    // 2. Jika tiada gambar (NULL), paparkan ikon yang boleh ditekan
                     <?php else: ?>
-                        <span style="font-size:24px;">👤</span>
+                        <a href="#" onclick="alert('Tiada gambar profil dimuat naik oleh pengguna ini.'); return false;" style="text-decoration: none;">
+                            <span style="font-size:24px;">👤</span>
+                        </a>
                     <?php endif; ?>
                 </td>
                 <td><?php echo htmlspecialchars($row['fullname']); ?></td>
