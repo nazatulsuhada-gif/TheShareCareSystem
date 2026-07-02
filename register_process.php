@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if($password !== $confirmPassword) die("Error: Passwords do not match.");
     
-    // Semakan e-mel
     $check = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
     if(mysqli_num_rows($check) > 0) die("Error: Email already registered.");
 
