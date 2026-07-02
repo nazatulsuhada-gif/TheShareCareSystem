@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // 1. Ambil data user berdasarkan email
     $stmt = $conn->prepare("SELECT user_id, password, role FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -18,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_regenerate_id(true);
             
             $_SESSION['user_id'] = $user['user_id'];
-            $_SESSION['role'] = $user['role'];
+            $_SESSION['role'] = $user['role']; 
 
             if ($user['role'] === 'student') {
                 header("Location: index.php");
@@ -27,15 +28,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             exit();
         } else {
-            echo "<script>alert('Incorrect email or password.');</script>";
+            echo "<script>alert('Invalid email or password.');</script>";
         }
     } else {
-        echo "<script>alert('Incorrect email or password.');</script>";
+        echo "<script>alert('Invalid email or password');</script>";
     }
 }
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -400,13 +401,10 @@ if (isset($_GET['registered'])) {
   window.onload = function() {
       let role = "<?php echo htmlspecialchars($_GET['role'] ?? ''); ?>";
       let emailField = document.getElementById("username"); 
-
       if (role === "staff") {
           emailField.placeholder = "azilah@utem.edu.my";
       } else if (role === "student") {
           emailField.placeholder = "B012345678@student.utem.edu.my";
-      } else if (role === "alumni") {
-          emailField.placeholder = "melo123@gmail.com";
       }
   };
   const passwordInput = document.getElementById("password");
