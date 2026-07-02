@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $sql = "INSERT INTO contact_messages (name, email, phone, message) VALUES ('$name', '$email', '$phone', '$message')";
 
   if (mysqli_query($conn, $sql)) {
-    // Tunjukkan alert, kemudian redirect ke halaman yang sama untuk kosongkan borang
     echo "<script>
             alert('Message sent successfully.');
             window.location.href = 'contact.php';
@@ -150,8 +149,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       background: #5e3b10;
     }
 
-
-    /* TABLET */
     @media (max-width: 992px) {
 
       nav ul {
@@ -167,7 +164,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
     }
 
-    /* MOBILE */
     @media (max-width: 768px) {
 
       nav {
@@ -210,7 +206,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
-    /* SMALL MOBILE */
     @media (max-width: 480px) {
 
       body {
