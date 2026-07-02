@@ -465,8 +465,6 @@ window.onload = function() {
         emailField.placeholder = "azilah@utem.edu.my";
     } else if (role === "student") {
         emailField.placeholder = "B012345678@student.utem.edu.my";
-    } else if (role === "alumni") {
-        emailField.placeholder = "melo123@gmail.com";
     }
 };
 
@@ -496,11 +494,6 @@ function validateRegister() {
     } else if (role === "student") {
         if (!email.endsWith("@student.utem.edu.my")) {
             alert("Students must use @student.utem.edu.my email!");
-            return false;
-        }
-    } else if (role === "alumni") {
-        if (!email.endsWith("@gmail.com")) {
-            alert("Alumni must use @gmail.com email!");
             return false;
         }
     }
