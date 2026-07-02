@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             if ($row['role'] === 'student') {
                 header("Location: student.php");
-            } elseif ($row['role'] === 'alumni' || $row['role'] === 'staff') {
+            } elseif ($row['role'] === 'staff') {
                 header("Location: donor.php");
             } else {
                 header("Location: index.php");
@@ -39,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     } else {
-        // Mesej jika akaun tidak dijumpai
         echo "<script>alert('Account not found!'); window.history.back();</script>";
         exit();
     }
