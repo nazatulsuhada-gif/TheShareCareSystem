@@ -274,7 +274,7 @@
           <span class="symbol">+</span>
         </div>
         <div class="answer">
-          The Share Care is open to all UTeM community members, including students, alumni & staff.
+          The Share Care is open to all UTeM community members, including students & staff.
         </div>
       </div>
 
