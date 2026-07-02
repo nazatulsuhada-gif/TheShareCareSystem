@@ -405,24 +405,23 @@ nav a:hover{
 
 <body>
 
-    <nav>
-        <div class="logo">⚪ THE SHARE CARE</div>
+<nav>
+<div class="logo">⚪ THE SHARE CARE</div>
 
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="about.php"><u>About Us</u></a></li>
-            <li><a href="faq.php">FAQs</a></li>
-            <li><a href="contact.php">Contact Us</a></li>
-        </ul>
-        
-    </nav>
+<ul>
+<li><a href="index.php">Home</a></li>
+<li><a href="about.php"><u>About Us</u></a></li>
+<li><a href="faq.php">FAQs</a></li>
+<li><a href="contact.php">Contact Us</a></li>
+</ul>
+</nav>
 
-    <section class="hero">
-    <img src="images/about-banner.png" alt="About Banner">
-    <div class="hero-text">
-    <h1>About Us</h1>
-    <p>Sharing today, caring always.</p>
-    <p>Building a better community together.</p>
+<section class="hero">
+<img src="images/about-banner.png" alt="About Banner">
+<div class="hero-text">
+<h1>About Us</h1>
+<p>Sharing today, caring always.</p>
+<p>Building a better community together.</p>
 </div>
 </section>
 
