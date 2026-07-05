@@ -12,14 +12,12 @@ $roleResult = mysqli_query($conn, $roleQuery);
 
 $studentCount = 0;
 $staffCount = 0;
-$alumniCount = 0;
 
 while($row = mysqli_fetch_assoc($roleResult)) {
     if($row['role'] == 'student') $studentCount = $row['total'];
     if($row['role'] == 'staff') $staffCount = $row['total'];
-    if($row['role'] == 'alumni') $alumniCount = $row['total'];
 }
-$totalUsers = $studentCount + $staffCount + $alumniCount;
+$totalUsers = $studentCount + $staffCount;
 
 
 $search = "";
@@ -141,15 +139,13 @@ if(!$result){
                     <?php 
                     $profilePath = "../uploads/profile/" . $row['profile_picture']; 
                     
-                    // 1. Jika ada nama fail DALAM DATABASE DAN fail wujud dalam folder
                     if(!empty($row['profile_picture']) && file_exists($profilePath)): ?>
                         <a href="<?php echo $profilePath; ?>" target="_blank">
                             <img src="<?php echo $profilePath; ?>" class="profile-img" alt="Profile">
                         </a>
                     
-                    // 2. Jika tiada gambar (NULL), paparkan ikon yang boleh ditekan
                     <?php else: ?>
-                        <a href="#" onclick="alert('Tiada gambar profil dimuat naik oleh pengguna ini.'); return false;" style="text-decoration: none;">
+                        <a href="#" onclick="alert('This user has not uploaded a profile picture.'); return false;" style="text-decoration: none;">
                             <span style="font-size:24px;">👤</span>
                         </a>
                     <?php endif; ?>
@@ -176,19 +172,17 @@ if(!$result){
     
     const studentData = <?php echo $studentCount; ?>;
     const staffData = <?php echo $staffCount; ?>;
-    const alumniData = <?php echo $alumniCount; ?>;
     const total = studentData + staffData + alumniData;
 
     new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['Student', 'Staff', 'Alumni'],
+            labels: ['Student', 'Staff'],
             datasets: [{
-                data: [studentData, staffData, alumniData],
+                data: [studentData, staffData],
                 backgroundColor: [
                     '#ffcc00', 
-                    '#36a2eb', 
-                    '#4bc0c0'  
+                    '#36a2eb' 
                 ],
                 borderWidth: 1
             }]
