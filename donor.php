@@ -21,7 +21,7 @@ if (!$userData) {
 }
 
 $role = $userData['role'];
-if ($role !== 'alumni' && $role !== 'staff') {
+if ($role !== 'staff' && $role !== 'student') {
     header("Location: index.php");
     exit();
 }
@@ -31,7 +31,7 @@ $fullname = $userData['fullname'];
 $profilePic = $userData['profile_picture'] ?? 'images/profile-placeholder.png';
 
 $_SESSION['fullname'] = $fullname;
-$_SESSION['role'] = $role;
+$_SESSION['role'] = $role; 
 
 $query = "SELECT * FROM donations WHERE user_id = ? AND is_deleted = 0 ORDER BY created_at DESC";
 $stmt = $conn->prepare($query);
@@ -54,9 +54,11 @@ $result = $stmt->get_result();
 <div id="sidebar" class="sidebar">
     <button class="close-btn" onclick="toggleSidebar()"><i class="fa-solid fa-xmark"></i></button>
     <div class="profile-section">
-        <div class="profile-picture">
-            <img src="<?= htmlspecialchars($profilePic) ?>" class="sidebar-profile-pic" alt="Profile">
-        </div>
+
+    <div class="profile-picture">
+    <img src="<?= htmlspecialchars($profilePic) ?>" class="sidebar-profile-pic" alt="Profile">
+</div>
+
         <h3>Welcome, <span id="username"><?php echo htmlspecialchars($_SESSION['fullname'] ?? 'User'); ?></span></h3>
     </div>
     <ul class="sidebar-links">
@@ -84,10 +86,10 @@ $result = $stmt->get_result();
         <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
     <select class="category-select" id="category-select" onchange="filterByCategory()">
-        <option selected value="all">All</option>
-        <option value="1">Books & Stationary</option>
-        <option value="2">Clothes</option>
-        <option value="3">Electric & Electronics</option>
+    <option selected value="all">All</option>
+    <option value="1">Books & Stationary</option>
+    <option value="2">Clothes</option>
+    <option value="3">Electric & Electronics</option>
     </select>
     <a href="upload.php" class="add-btn">+</a>
 </section>
@@ -115,24 +117,24 @@ $result = $stmt->get_result();
 <?php include "footer.php"; ?>
 
 <script>
-function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-    document.body.classList.toggle("sidebar-active");
-}
+    function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("active");
+        document.body.classList.toggle("sidebar-active");
+    }
 
-function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
-}
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
 
-document.getElementById("searchInput").addEventListener("input", function () {
-    const query = this.value.toLowerCase();
-    document.querySelectorAll(".item-card").forEach(card => {
-        const name = card.querySelector(".item-name").textContent.toLowerCase();
-        card.style.display = name.includes(query) ? "block" : "none";
+    document.getElementById("searchInput").addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+        document.querySelectorAll(".item-card").forEach(card => {
+            const name = card.querySelector(".item-name").textContent.toLowerCase();
+            card.style.display = name.includes(query) ? "block" : "none";
+        });
     });
-});
 
-function filterByCategory() {
+    function filterByCategory() {
     const selectedCat = document.getElementById("category-select").value;
 
     document.querySelectorAll(".item-card").forEach(card => {
