@@ -12,14 +12,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $item_name = mysqli_real_escape_string($conn, $_POST['item_name']);
     $quantity = (int)$_POST['quantity'];
     if ($quantity <= 0) {
-        die("Kuantiti mesti sekurang-kurangnya 1.");
+        die("The quantity must be at least 1.");
     }
     $category = mysqli_real_escape_string($conn, $_POST['category']);
     $location = mysqli_real_escape_string($conn, $_POST['location']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
     $status = 'pending';
     if (!isset($_FILES['product_image']) || $_FILES['product_image']['error'] !== UPLOAD_ERR_OK) {
-        echo "<script>alert('Ralat: Sila muat naik gambar item derma anda!'); window.history.back();</script>";
+        echo "<script>alert('Error: Please upload a picture of your donation item!'); window.history.back();</script>";
         exit();
     }
     $imageName = time() . "_" . basename($_FILES['product_image']['name']);
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         mysqli_stmt_close($stmt);
     } else {
-        echo "<script>alert('Gagal menyimpan fail gambar.'); window.history.back();</script>";
+        echo "<script>alert('Failed to save the image file.'); window.history.back();</script>";
     }
 }
 ?>
